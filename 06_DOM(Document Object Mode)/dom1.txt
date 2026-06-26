@@ -1,0 +1,60 @@
+Document Object Mode
+DOM, or Document Object Model, is essentially the structure of a webpage. It represents the document as a tree of nodes and objects
+-----------------------------
+1-Key DOM Selection Methods:-
+-----------------------------
+i-document.getElementById('id'): Used to select a specific element by its unique id. It returns a single element object.
+
+ii-document.getElementsByClassName('class'): Used to select all elements sharing a specific class name. It returns an HTMLCollection.
+
+iii-document.querySelector('selector'): A powerful method that accepts CSS-style selectors (like .class, #id, or tag). It returns only the first element that matches the criteria 
+
+iV-document.querySelectorAll('selector'): Similar to querySelector, but it selects all matching elements on the page. It returns a NodeList 
+
+<------------------------------------------------------------------------------>
+
+--------------------
+2. Managing Content
+---------------------
+There are three primary properties used to access or modify the content inside an element:
+
+i-.innerText: Returns or sets only the text that is currently visible to the user. It ignores content hidden by CSS (e.g., display: none) 
+ii-.textContent: Returns or sets the entire text content of an element, including hidden elements 
+iii-.innerHTML: Returns or sets the content along with any nested HTML tags. This is useful if you need to inject new HTML structures
+<--------------------------------------------------------------------------------->
+
+--------------------------
+3. Attributes and Styling
+--------------------------
+i-getAttribute('attribute'): Retrieves the value of a specific attribute (e.g., id, class) 
+ii-setAttribute('attribute', 'value'): Sets or updates an attribute. Caution: This method overwrites the existing value of the attribute, so be careful not to delete previous classes or IDs
+iii-element.style.property: Allows you to directly manipulate CSS styles via JavaScript (e.g., element.style.backgroundColor = 'green'). Note that CSS properties written with hyphens (like background-color) are converted to camelCase in JavaScript 
+
+HTML VS NODELIST
+--------------------------------
+--------------------------------
+
+1----HTMLCollection
+=>The "Tag/Class" Rule: Created when using document.getElementsByClassName() or document.getElementsByTagName().
+=>What it holds: Contains only HTML elements (e.g., <div>, <h1>).
+=>Key Trait: "Live"—it automatically updates if elements are added or removed from the DOM.
+=>Looping: Not a true array. No .forEach(). You must convert it to an array first to loop easily.
+
+2------ NodeList
+=>The "Selector" Rule: Created when using document.querySelectorAll().
+=>What it holds: Contains Nodes (elements + text nodes + comments).
+=>Key Trait: "Static"—it's a snapshot in time; it doesn't auto-update if the DOM changes.
+=>Looping: Has .forEach() built-in, making it easier to use directly.
+
+/////////////////////////////////---------------------Note
+==>document.querySelectorAll('selector'): Used to select all elements matching a CSS selector. It returns a NodeList. Unlike other collections, a NodeList has a built-in .forEach() method, making it easier to iterate through elements
+
+==>document.getElementsByClassName('class'): Used to select all elements with a specific class. It returns an HTMLCollection.
+
+
+------------------------------------------
+Important distinction between collections:|
+------------------------------------------
+=>An HTMLCollection does not have a .forEach() method. To use array methods (like map or forEach) on an HTMLCollection, you must first convert it into an array using Array.from().
+
+=>Array.from(collection): A utility method to transform a non-array collection (like HTMLCollection or NodeList) into a true JavaScript array, granting access to all array prototype methods (33:02).
